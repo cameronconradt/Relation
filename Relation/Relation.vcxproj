@@ -111,6 +111,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ColColKey.h" />
+    <ClInclude Include="ColumnNamePair.h" />
+    <ClInclude Include="ColValueKey.h" />
+    <ClInclude Include="Header.h" />
+    <ClInclude Include="Parameter.h" />
+    <ClInclude Include="Relation.h" />
+    <ClInclude Include="Row.h" />
+    <ClInclude Include="SelectionKey.h" />
+    <ClInclude Include="String.h" />
+    <ClInclude Include="Table.h" />
+    <ClInclude Include="Token.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ColColKey.cpp" />
+    <ClCompile Include="ColumnNamePair.cpp" />
+    <ClCompile Include="ColValueKey.cpp" />
+    <ClCompile Include="Header.cpp" />
+    <ClCompile Include="Parameter.cpp" />
+    <ClCompile Include="Relation.cpp" />
+    <ClCompile Include="Row.cpp" />
+    <ClCompile Include="SelectionKey.cpp" />
+    <ClCompile Include="String.cpp" />
+    <ClCompile Include="Table.cpp" />
+    <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

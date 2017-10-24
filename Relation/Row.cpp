@@ -11,3 +11,13 @@ Row::Row(list<String> invalues)
 Row::~Row()
 {
 }
+
+bool Row::satisfies(ColColKey colColKey)
+{
+
+}
+
+bool Row::satisfies(ColValueKey colValueKey)
+{
+
+}

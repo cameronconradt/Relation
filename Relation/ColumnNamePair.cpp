@@ -2,8 +2,10 @@
 
 
 
-ColumnNamePair::ColumnNamePair()
+ColumnNamePair::ColumnNamePair(int column, String inname)
 {
+	col = column;
+	name = inname;
 }
 
 

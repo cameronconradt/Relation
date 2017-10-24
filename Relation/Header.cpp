@@ -2,8 +2,9 @@
 
 
 
-Header::Header()
+Header::Header(set<String> incolumnNames)
 {
+	columnNames = incolumnNames;
 }
 
 

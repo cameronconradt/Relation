@@ -2,8 +2,9 @@
 
 
 
-Row::Row()
+Row::Row(list<String> invalues)
 {
+	values = invalues;
 }
 
 

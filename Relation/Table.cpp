@@ -2,14 +2,15 @@
 
 
 
-Table::Table()
-{
-}
-
-
-Table::~Table(String inname, Header inheader)
+Table::Table(String inname, Header inheader)
 {
 	name = inname;
 	header = inheader;
-	rows.addRow(Row row)
+	rows.addRow(Row row);
+}
+
+
+Table::~Table()
+{
+
 }

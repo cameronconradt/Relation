@@ -11,6 +11,6 @@ public:
 protected:
 	String name;
 	Header header;
-	set<Row> rows
+	set<Row> rows;
 };
 

@@ -4,7 +4,10 @@ class ColColKey :
 	public SelectionKey
 {
 public:
-	ColColKey();
+	ColColKey(int column1, int column2);
 	~ColColKey();
+protected:
+	int col1;
+	int col2;
 };
 

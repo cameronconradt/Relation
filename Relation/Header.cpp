@@ -7,6 +7,15 @@ Header::Header(set<String> incolumnNames)
 	columnNames = incolumnNames;
 }
 
+Header::Header(Header* inheader)
+{
+	columnNames = inheader->getcolnames;
+}
+
+Header::Header()
+{
+
+}
 
 Header::~Header()
 {
@@ -32,5 +41,16 @@ void Header::removeAllOtherColumnsBut(set<int> columnsToKeep)
 				currentcol++;
 			}
 		}
+	}
+}
+
+void Header::rename(int column, String newName)
+{
+	int colnum = 0;
+	for (auto i : columnNames)
+	{
+		if (colnum = column)
+			i = newName;
+		colnum++;
 	}
 }

@@ -10,10 +10,14 @@ class Table
 public:
 	Table(String inname, Header inheader);
 	Table(Header inheader);
+	Table(Table* intable);
 	~Table();
 	Table* select(set<SelectionKey> selectionKeys);
 	Table* project(set<int> columnsToKeep);
 	Table* rename(set<ColumnNamePair> newNames);
+	String getName();
+	Header getHeader();
+	set<Row*> getRows();
 protected:
 	String name;
 	Header header;

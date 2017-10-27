@@ -6,6 +6,7 @@ class String :
 {
 public:
 	String(Token* token);
+	String();
 	~String();
 	string tostring();
 protected:

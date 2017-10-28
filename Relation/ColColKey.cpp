@@ -17,3 +17,11 @@ bool ColColKey::type()
 {
 	return false;
 }
+int ColColKey::getcol1()
+{
+	return col1;
+}
+int ColColKey::getcol2()
+{
+	return col2;
+}

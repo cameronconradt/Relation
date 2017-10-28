@@ -26,7 +26,7 @@ Table::~Table()
 
 }
 
-Table* Table::select(set<SelectionKey> selectionKeys)
+Table* Table::select(set<SelectionKey*> selectionKeys)
 {
 	Table* result = new Table(new Header(header));
 	for (auto i : rows)
@@ -34,7 +34,18 @@ Table* Table::select(set<SelectionKey> selectionKeys)
 		bool satisfied = true;
 		for (auto j : selectionKeys)
 		{
-			satisfied = i->satisfies(j);
+			/*Base *b = new Derived<int>(1);
+			Derived<int> *d = dynamic_cast<Derived<int> *>(b);*/
+			if (j->type())
+			{
+				ColValueKey* temp = dynamic_cast<ColValueKey*>(j);
+				satisfied = i->satisfies(temp);
+			}
+			else
+			{
+				ColColKey* temp = dynamic_cast<ColColKey*>(j);
+				satisfied = i->satisfies(temp);
+			}
 			if (!satisfied)
 				break;
 		}
@@ -64,6 +75,7 @@ Table* Table::rename(set<ColumnNamePair> newNames)
 	{
 		result->header.rename(i.getColumn(), i.getName());
 	}
+	return result;
 }
 
 String Table::getName()

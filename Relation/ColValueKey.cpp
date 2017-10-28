@@ -17,3 +17,13 @@ bool ColValueKey::type()
 {
 	return true;
 }
+
+int ColValueKey::getcol()
+{
+	return col;
+}
+
+String ColValueKey::getval()
+{
+	return val;
+}

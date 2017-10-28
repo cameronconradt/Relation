@@ -2,7 +2,7 @@
 
 
 
-Row::Row(list<String> invalues)
+Row::Row(vector<String> invalues)
 {
 	values = invalues;
 }
@@ -16,14 +16,20 @@ Row::~Row()
 {
 }
 
-bool Row::satisfies(ColColKey colColKey)
+bool Row::satisfies(ColColKey* colColKey)
 {
-
+	if (values[colColKey->getcol1()].tostring() == values[colColKey->getcol2()].tostring())
+		return true;
+	else
+		return false;
 }
 
-bool Row::satisfies(ColValueKey colValueKey)
+bool Row::satisfies(ColValueKey* colValueKey)
 {
-
+	if (values[colValueKey->getcol()].tostring() == colValueKey->getval().tostring())
+		return true;
+	else
+		return false;
 }
 
 void Row::removeAllOtherColumnsBut(set<int> columnsToKeep)
@@ -44,7 +50,7 @@ void Row::removeAllOtherColumnsBut(set<int> columnsToKeep)
 	}
 }
 
-list<String> Row::getvalues()
+vector<String> Row::getvalues()
 {
 	return values;
 }

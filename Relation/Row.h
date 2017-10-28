@@ -3,18 +3,18 @@
 #include "ColColKey.h"
 #include "ColValueKey.h"
 #include <set>
-#include <list>
+#include <vector>
 class Row
 {
 public:
-	Row(list<String> invalues);
+	Row(vector<String> invalues);
 	Row(Row* inrow);
 	~Row();
-	bool satisfies(ColColKey colColKey);
-	bool satisfies(ColValueKey colValueKey);
+	bool satisfies(ColColKey* colColKey);
+	bool satisfies(ColValueKey* colValueKey);
 	void removeAllOtherColumnsBut(set<int> columnsToKeep);
-	list<String> getvalues();
+	vector<String> getvalues();
 protected:
-	list<String> values;
+	vector<String> values;
 };
 

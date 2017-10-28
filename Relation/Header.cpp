@@ -9,7 +9,7 @@ Header::Header(set<String> incolumnNames)
 
 Header::Header(Header* inheader)
 {
-	columnNames = inheader->getcolnames;
+	columnNames = inheader->getcolnames();
 }
 
 Header::Header()

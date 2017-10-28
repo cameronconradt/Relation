@@ -2,6 +2,7 @@
 #include "Table.h"
 #include "SelectionKey.h"
 #include "ColumnNamePair.h"
+#include <vector>
 class Relation
 {
 public:
@@ -11,6 +12,6 @@ public:
 	Table project(set<int> columnsToKeep);
 	Table rename(set<ColumnNamePair> newNames);
 protected:
-	Table mytable;
+	vector<Table> mytables;
 };
 

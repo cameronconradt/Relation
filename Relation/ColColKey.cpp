@@ -12,3 +12,8 @@ ColColKey::ColColKey(int column1, int column2)
 ColColKey::~ColColKey()
 {
 }
+
+bool ColColKey::type()
+{
+	return false;
+}

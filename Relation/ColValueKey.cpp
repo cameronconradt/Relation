@@ -12,3 +12,8 @@ ColValueKey::ColValueKey(int column, String value)
 ColValueKey::~ColValueKey()
 {
 }
+
+bool ColValueKey::type()
+{
+	return true;
+}

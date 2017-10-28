@@ -7,6 +7,7 @@ class ColValueKey :
 public:
 	ColValueKey(int column, String value);
 	~ColValueKey();
+	bool type();
 protected:
 	int col;
 	String val;

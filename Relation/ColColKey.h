@@ -6,6 +6,7 @@ class ColColKey :
 public:
 	ColColKey(int column1, int column2);
 	~ColColKey();
+	bool type();
 protected:
 	int col1;
 	int col2;

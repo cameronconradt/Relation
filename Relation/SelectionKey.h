@@ -3,7 +3,7 @@ class SelectionKey
 {
 public:
 	SelectionKey();
-	~SelectionKey();
-	virtual bool type() = 0;
+	virtual ~SelectionKey();
+	virtual bool type()=0;
 };
 

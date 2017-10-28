@@ -18,6 +18,7 @@ public:
 	String getName();
 	Header getHeader();
 	set<Row*> getRows();
+	void addRow(vector<String> invalues);
 protected:
 	String name;
 	Header header;

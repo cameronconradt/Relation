@@ -8,9 +8,6 @@ class Relation
 public:
 	Relation();
 	~Relation();
-	Table select(set<SelectionKey> selectionKeys);
-	Table project(set<int> columnsToKeep);
-	Table rename(set<ColumnNamePair> newNames);
 protected:
 	vector<Table> mytables;
 };

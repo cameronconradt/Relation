@@ -23,7 +23,10 @@ Table::Table(Table* intable)
 
 Table::~Table()
 {
-
+	for (auto i : rows)
+	{
+		delete i;
+	}
 }
 
 Table* Table::select(set<SelectionKey*> selectionKeys)
@@ -91,4 +94,9 @@ Header Table::getHeader()
 set<Row*> Table::getRows()
 {
 	return rows;
+}
+
+void Table::addRow(vector<String> invalues)
+{
+	rows.insert(new Row(invalues));
 }

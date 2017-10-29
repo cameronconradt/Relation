@@ -1,4 +1,3 @@
-#pragma once
 #include "Parameter.h"
 #include <string>
 class String :

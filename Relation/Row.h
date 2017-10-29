@@ -1,4 +1,3 @@
-#pragma once
 #include "String.h"
 #include "ColColKey.h"
 #include "ColValueKey.h"

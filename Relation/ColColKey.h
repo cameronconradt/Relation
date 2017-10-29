@@ -1,4 +1,3 @@
-#pragma once
 #include "SelectionKey.h"
 class ColColKey :
 	public SelectionKey

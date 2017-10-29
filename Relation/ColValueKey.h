@@ -1,4 +1,3 @@
-#pragma once
 #include "SelectionKey.h"
 #include "String.h"
 class ColValueKey :

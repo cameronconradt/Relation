@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -12,6 +13,14 @@ public:
 	string gettype();
 	string gettext();
 	string getline();
+	bool operator<(const Token rh)
+	{
+		if (this->text < rh.text)
+		{
+			return true;
+		}
+		return false;
+	}
 protected:
 	string type;
 	string text;

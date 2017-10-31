@@ -1,3 +1,4 @@
+#pragma once
 #include "String.h"
 #include "Header.h"
 #include "Row.h"

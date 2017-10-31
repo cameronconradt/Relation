@@ -10,7 +10,16 @@
 
 using namespace std;
 
-bool test1(Table* table);
+bool test1(Table* table, int col1, int col2);
+bool test2(Table* table, String* a);
+bool test3(Table* table, String* c, int coltorename);
+bool test4(Table* table, String* a, int col);
+bool test5(Table* table);
+bool test6(Table* table);
+bool test7(Table* table);
+bool test8(Table* table);
+bool test9(Table* table);
+bool test10(Table* table);
 void addtovector(vector<vector<String>> &vec, String str1, String str2);
 
 int main()

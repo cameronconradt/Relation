@@ -13,9 +13,9 @@ public:
 	string gettype();
 	string gettext();
 	string getline();
-	bool operator<(const Token rh)
+	friend bool operator<(const Token lh, const Token rh)
 	{
-		if (this->text < rh.text)
+		if (lh.text < rh.text)
 		{
 			return true;
 		}

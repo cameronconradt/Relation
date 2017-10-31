@@ -11,7 +11,7 @@
 using namespace std;
 
 bool test1(Table* table, int col1, int col2);
-bool test2(Table* table, String* a);
+bool test2(Table* table, String* a, int keep);
 bool test3(Table* table, String* c, int coltorename);
 bool test4(Table* table, String* a, int col);
 bool test5(Table* table);
@@ -24,7 +24,6 @@ void addtovector(vector<vector<String>> &vec, String str1, String str2);
 
 int main()
 {
-	vector<Table*> solutions;
 	String* a = new String( new Token("STRING", "a", 1));
 	String* b = new String(new Token("STRING", "b", 1));
 	String* c = new String(new Token("STRING", "c", 1));
@@ -46,7 +45,7 @@ int main()
 		results.push_back(true);
 	else
 		results.push_back(false);
-	if (test2(mytable, a))
+	if (test2(mytable, a, 0))
 		results.push_back(true);
 	else
 		results.push_back(false);
@@ -84,10 +83,10 @@ int main()
 		results.push_back(false);
 	for (int i = 1; i < 11; i++)
 	{
-		if (results[i])
-			cout << "Test " << i << "Succeeded!" << endl;
+		if (results[i-1])
+			cout << "Test " << i << " Succeeded!" << endl;
 		else
-			cout << "Test " << i << "Failed!" << endl;
+			cout << "Test " << i << " Failed!" << endl;
 	}
 
 	return 0;
@@ -112,10 +111,10 @@ bool test1(Table* table, int col1, int col2) // Select - ColCol
 	else
 		return false;
 }
-bool test2(Table* table, String* a) // Project
+bool test2(Table* table, String* a, int keep) // Project
 {
 	set<int> columnstokeep;
-	columnstokeep.insert(0);
+	columnstokeep.insert(keep);
 	table = table->project(columnstokeep);
 	auto i = table->getHeader().getcolnames().begin();
 	String temp = *i;
@@ -135,7 +134,12 @@ bool test3(Table* table, String* c, int coltorename) // Rename
 	table = table->rename(newNames);
 	set<String> newtableheader = table->getHeader().getcolnames();
 	auto i = newtableheader.begin();
-	temp = *i;
+	for(int j = 0; j < coltorename && i != newtableheader.end(); j++)
+	{
+		i++;
+	}
+	if(i != newtableheader.end())
+		temp = *i;
 	if (temp.tostring() == c->tostring())
 	{
 		return true;
@@ -205,7 +209,7 @@ bool test7(Table* table) // Query a(c,c)
 	String* c = new String(new Token("STRING", "c", 1));
 	String* a = new String(new Token("STRING", "a", 1));
 	if (test1(table, 0, 1))
-		if (test2(table, a))
+		if (test2(table, a, 0))
 			if (test3(table, c, 0))
 			{
 				return true;
@@ -218,7 +222,7 @@ bool test8(Table* table) // Query a(c,'b')
 	String* c = new String(new Token("STRING", "c", 1));
 	String* b = new String(new Token("STRING", "b", 1));
 	if (test4(table, b, 0))
-		if (test2(table, a))
+		if (test2(table, a, 0))
 			if (test3(table, c, 0))
 				return true;
 	return false;
@@ -230,7 +234,7 @@ bool test9(Table* table) // Query a('b',c)
 	String* c = new String(new Token("STRING", "c", 1));
 	String* b = new String(new Token("STRING", "b", 1));
 	if (test4(table, b, 1))
-		if (test2(table, a))
+		if (test2(table, b, 1))
 			if (test3(table, c, 0))
 				return true;
 	return false;

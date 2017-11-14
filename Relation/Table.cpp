@@ -117,6 +117,27 @@ Table* Table::naturalJoin(Table* table)
                                                                                                                 columnsToMerge))
 */
 }
+
+Table* Table::Union(Table* table)
+{
+	/*	vector<int> newOrderingMap = 
+		header.createMapFor(table.getHeader())
+	for(Row row in table.rows)
+		Row rearrangedRow =	
+			row.rearrange(newOrderingMap)
+		rows.add(rearrangedRow)
+*/
+
+	Table* result = new Table(this);
+	vector<int> neworder = header.createMap(table->getHeader());
+	for (auto i : rows)
+	{
+		Row* rearrangedRow = new Row(i->rearrange(neworder));
+		result->addRow(rearrangedRow);
+	}
+	return result;
+}
+
 String Table::getName()
 {
 	return name;

@@ -17,6 +17,7 @@ public:
 	vector<int> getColumnsToMerge(Header inheader);
 	Header* mergeWith(Header inheader, vector<int> columnsToMerge);
 	set<ColColKey> getColumnMappings(Header inheader);
+	vector<int> createMap(Header inheader);
 protected:
 	vector<String> columnNames;
 	int getLocOf(String value);

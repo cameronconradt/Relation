@@ -101,3 +101,14 @@ Row* Row::mergeWith(Row* inrow, vector<int> columnsToMerge)
 	return result;
 */
 }
+
+Row* Row::rearrange(vector<int> order)
+{
+	vector<String> newvalues;
+	for (int i = 0; i < order.size(); i++)
+	{
+		newvalues.push_back(values[order[i]]);
+	}
+	Row* result = new Row(newvalues);
+	return result;
+}

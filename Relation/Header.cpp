@@ -140,3 +140,14 @@ int Header::getLocOf(String value)
 	}
 	return result;
 }
+
+vector<int> Header::createMap(Header inheader)
+{
+	vector<int> result;
+	for (int i = 0; i < columnNames.size(); i++)
+	{
+		int loc = inheader.getLocOf(columnNames[i]);
+		result.push_back(loc);
+	}
+	return result;
+}

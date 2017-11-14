@@ -16,6 +16,7 @@ public:
 	bool matches(Row otherRow, set<ColColKey> columnsToMerge);
 	vector<String> getvalues() const;
 	Row* mergeWith(Row* inrow, vector<int> columnsToMerge);
+	Row* rearrange(vector<int> order);
 	friend bool operator<(const Row lh, const Row rh)
 	{
 		for (int i = 0; i < lh.values.size() || i < rh.values.size(); i++)

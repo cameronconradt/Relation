@@ -5,6 +5,15 @@
 #include "SelectionKey.h"
 #include "ColumnNamePair.h"
 #include <set>
+#include <sstream>
+
+struct APtrComp
+{
+	bool operator()(const Row* lh, const Row* rh) const{
+		return *lh < *rh;
+	}
+};
+
 class Table
 {
 public:
@@ -17,11 +26,18 @@ public:
 	Table* rename(set<ColumnNamePair> newNames);
 	String getName();
 	Header getHeader();
-	set<Row*> getRows();
+	set<Row*,APtrComp> getRows();
 	void addRow(vector<String> invalues);
+	string tostring();
+	/*struct APtrComp
+	{
+		bool operator()(const Row* lh, const Row* rh) const{
+			return *lh < *rh;
+		}
+	};*/
 protected:
 	String name;
 	Header header;
-	set<Row*> rows;
+	set<Row*,APtrComp> rows;
 };
 

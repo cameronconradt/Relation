@@ -82,6 +82,40 @@ Table* Table::rename(set<ColumnNamePair> newNames)
 	return result;
 }
 
+Table* Table::naturalJoin(Table* table)
+{
+	vector<int> columnsToMerge = header.getColumnsToMerge(table->getHeader());
+	Header* resultHeader = new Header(header.mergeWith(table->header, columnsToMerge));
+	Table* result = new Table(resultHeader);
+
+	set <ColColKey> colColPairs = header.getColumnMappings(table->header);
+
+	for (auto i : rows)
+	{
+		for (auto j : table->rows)
+		{
+			if (i->matches(j, colColPairs))
+			{
+				result->addRow(i->mergeWith(j));
+			}
+		}
+	}
+	/*	vector<int> columnsToMerge = 
+		header.getColumnsToMerge(table.header)
+ 	Table resultHeader = header.mergeWith(table.header, columnsToMerge))
+	Table result = new Table(resultHeader)
+
+	set<ColColPair> colColPairs = 
+		header.getColumnMappings(table.header)
+
+	for( Row row1 in rows)
+		for(Row row2 in table.rows())
+			if(row1.matches(row2, colColPairs)
+				result.addRow(
+					row1.mergeWith(row2,
+                                                                                                                columnsToMerge))
+*/
+}
 String Table::getName()
 {
 	return name;

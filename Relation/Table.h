@@ -29,6 +29,7 @@ public:
 	set<Row*,APtrComp> getRows();
 	void addRow(vector<String> invalues);
 	string tostring();
+	Table* naturalJoin(Table* table);
 	/*struct APtrComp
 	{
 		bool operator()(const Row* lh, const Row* rh) const{

@@ -65,3 +65,39 @@ vector<String> Row::getvalues() const
 {
 	return values;
 }
+
+bool Row::matches(Row otherRow, set<ColColKey> columnsToMerge)
+{
+	bool result = true;
+	for (auto i : columnsToMerge)
+	{
+		result = values[i.getcol1()] == otherRow.values[i.getcol2()];
+	}
+	return result;
+
+	/*	bool result = true
+	int i = 0
+	while(i < colColPairs.length() && result) {
+		result = values[colColPairs[0]] == 
+			   	otherRow.values[colColPairs[1]]
+		i++
+	}
+	return result
+*/
+}
+
+Row* Row::mergeWith(Row* inrow, vector<int> columnsToMerge)
+{
+	Row* result = new Row(this);
+	for (auto i : columnsToMerge)
+	{
+		result->values.push_back(inrow->values[i]);
+	}
+	return result;
+	/*	Row result = new Row(this)
+	for(int i in columnsToMerge)
+		result.values.append(
+			otherRow.values[columnsToMerge[i]];
+	return result;
+*/
+}

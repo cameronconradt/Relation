@@ -96,10 +96,11 @@ Table* Table::naturalJoin(Table* table)
 		{
 			if (i->matches(j, colColPairs))
 			{
-				result->addRow(i->mergeWith(j));
+				result->addRow(i->mergeWith(j, columnsToMerge));
 			}
 		}
 	}
+	return result;
 	/*	vector<int> columnsToMerge = 
 		header.getColumnsToMerge(table.header)
  	Table resultHeader = header.mergeWith(table.header, columnsToMerge))
@@ -134,6 +135,10 @@ set<Row*,APtrComp> Table::getRows()
 void Table::addRow(vector<String> invalues)
 {
 	rows.insert(new Row(invalues));
+}
+void Table::addRow(Row* inrow)
+{
+	rows.insert(inrow);
 }
 
 string Table::tostring()

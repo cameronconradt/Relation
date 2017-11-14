@@ -27,9 +27,9 @@ int main()
 	String* a = new String( new Token("STRING", "a", 1));
 	String* b = new String(new Token("STRING", "b", 1));
 	String* c = new String(new Token("STRING", "c", 1));
-	set<String> columnNames;
-	columnNames.insert(*a);
-	columnNames.insert(*b);
+	vector<String> columnNames;
+	columnNames.push_back(*a);
+	columnNames.push_back(*b);
 	Header header(columnNames);
 	Table* mytable = new Table(*a, header);
 	vector<vector<String>> rows;
@@ -116,8 +116,8 @@ bool test2(Table* table, String* a, int keep) // Project
 	set<int> columnstokeep;
 	columnstokeep.insert(keep);
 	table = table->project(columnstokeep);
-	auto i = table->getHeader().getcolnames().begin();
-	String temp = *i;
+	vector<String> i = table->getHeader().getcolnames();
+	String temp = i[0];
 	if (temp.tostring() == a->tostring())
 	{
 		return true;
@@ -132,14 +132,14 @@ bool test3(Table* table, String* c, int coltorename) // Rename
 	ColumnNamePair* newpair = new ColumnNamePair(coltorename, temp);
 	newNames.insert(*newpair);
 	table = table->rename(newNames);
-	set<String> newtableheader = table->getHeader().getcolnames();
-	auto i = newtableheader.begin();
-	for(int j = 0; j < coltorename && i != newtableheader.end(); j++)
+	vector<String> newtableheader = table->getHeader().getcolnames();
+	int i = 0;
+	for(int j = 0; j < coltorename && i < newtableheader.size(); j++)
 	{
 		i++;
 	}
-	if(i != newtableheader.end())
-		temp = *i;
+	if(i < newtableheader.size())
+		temp = newtableheader[i];
 	if (temp.tostring() == c->tostring())
 	{
 		return true;
@@ -189,8 +189,8 @@ bool test6(Table* table) // Select ColCol - Project
 	columnstokeep.insert(1);
 	String* b = new String(new Token("STRING", "b", 1));
 	table = table->project(columnstokeep);
-	auto i = table->getHeader().getcolnames().begin();
-	String temp = *i;
+	vector<String> i = table->getHeader().getcolnames();
+	String temp = i[0];
 
 	if (table->getRows().size() == 2)
 	{

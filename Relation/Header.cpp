@@ -29,7 +29,7 @@ vector<String> Header::getcolnames()
 void Header::removeAllOtherColumnsBut(set<int> columnsToKeep)
 {
 	int currentcol = 0;
-	
+
 	for(std::set<int>::reverse_iterator i = columnsToKeep.rbegin(); i != columnsToKeep.rend(); i++)
 	{
 		for(int j = 0; j < columnNames.size()-1; j++)

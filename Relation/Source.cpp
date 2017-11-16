@@ -10,28 +10,30 @@
 
 using namespace std;
 
-bool test1(Table* table, int col1, int col2);
-bool test2(Table* table, String* a, int keep);
-bool test3(Table* table, String* c, int coltorename);
-bool test4(Table* table, String* a, int col);
-bool test5(Table* table);
+bool test1(Table* table1, Table* table2);
+bool test2(Table* table1, Table* table2, int columns);
+bool test3(Table* table1, Table* table2, int rows);
+bool test4(Table* table);
+bool test5(Table* table1, Table* table2);
 bool test6(Table* table);
 bool test7(Table* table);
-bool test8(Table* table);
+bool test8(Table* table1, Table* table2, int columns);
 bool test9(Table* table);
-bool test10(Table* table);
+bool test10(Table* table1, Table* table2);
 void addtovector(vector<vector<String>> &vec, String str1, String str2);
 
 int main()
 {
+	vector<Table*> tables;
 	String* a = new String( new Token("STRING", "a", 1));
 	String* b = new String(new Token("STRING", "b", 1));
 	String* c = new String(new Token("STRING", "c", 1));
+	String* d = new String(new Token("STRING", "d", 1));
 	vector<String> columnNames;
 	columnNames.push_back(*a);
 	columnNames.push_back(*b);
-	Header header(columnNames);
-	Table* mytable = new Table(*a, header);
+	Header* header = new Header(columnNames);
+	Table* mytable = new Table(*a, *header);
 	vector<vector<String>> rows;
 	addtovector(rows, *a, *a);
 	addtovector(rows, *b, *b);
@@ -40,44 +42,62 @@ int main()
 	for (int i = 0; i < rows.size(); i++)
 		mytable->addRow(rows[i]);
 	Table* newtable = new Table(mytable);
+	tables.push_back(newtable);
+	columnNames.pop_back();
+	columnNames.push_back(*c);
+	header = new Header(columnNames);
+	mytable = new Table(*b, *header);
+	for (int i = 0; i < rows.size(); i++)
+		mytable->addRow(rows[i]);
+	tables.push_back(mytable);
+	mytable = new Table(*c, *header);
+	tables.push_back(mytable);
+	columnNames.pop_back();
+	columnNames.pop_back();
+	columnNames.push_back(*c);
+	columnNames.push_back(*d);
+	mytable = new Table(*d, header);
+	for (int i = 0; i < rows.size(); i++)
+		mytable->addRow(rows[i]);
+	tables.push_back(mytable);
 	vector<bool> results;
-	if (test1(mytable, 0, 1))
+	if (test1(tables[0], tables[1]))
 		results.push_back(true);
 	else
 		results.push_back(false);
-	if (test2(mytable, a, 0))
+	if (test2(tables[0],tables[1],3))
 		results.push_back(true);
 	else
 		results.push_back(false);
-	if (test3(mytable, c,0))
+	if (test3(tables[0],tables[1],4))
 		results.push_back(true);
 	else
 		results.push_back(false);
-	if (test4(mytable, a,0))
+	if (test4(tables[2]))
 		results.push_back(true);
 	else
 		results.push_back(false);
-	if (test5(mytable))
+	if (test5(tables[0],tables[3]))
 		results.push_back(true);
 	else
 		results.push_back(false);
-	if (test6(mytable))
+	if (test6(tables[0]))
 		results.push_back(true);
 	else
 		results.push_back(false);
-	if (test7(mytable))
+	if (test7(tables[0]))
 		results.push_back(true);
 	else
 		results.push_back(false);
-	if (test8(mytable))
+	if (test8(tables[0],tables[1],2))
 		results.push_back(true);
 	else
 		results.push_back(false);
-	if (test9(mytable))
+	if (test9(tables[0]))
 		results.push_back(true);
 	else
 		results.push_back(false);
-	if (test10(mytable))
+	if (test10(tables[0],tables[3]))
 		results.push_back(true);
 	else
 		results.push_back(false);
@@ -98,154 +118,72 @@ void addtovector(vector<vector<String>> &vec, String str1, String str2)
 	row.push_back(str2);
 	vec.push_back(row);
 }
-bool test1(Table* table, int col1, int col2) // Select - ColCol
+bool test1(Table* table1, Table* table2) // Call Natural Join
 {
-	ColColKey* sel = new ColColKey(col1, col2);
-	set<SelectionKey*> myset;
-	myset.insert(sel);
-	table = table->select(myset);
-	if (table->getRows().size() == 2)
-	{
+	table1->naturalJoin(table2);
+	return true;
+}
+bool test2(Table* table1, Table* table2, int columns) // Natural Join test headers
+{
+	Table* newtable = table1->naturalJoin(table2);
+	if (newtable->getHeader().getcolnames().size() == columns)
 		return true;
-	}
 	else
 		return false;
 }
-bool test2(Table* table, String* a, int keep) // Project
+bool test3(Table* table1, Table* table2, int rows) // Natural Join test rows
 {
-	set<int> columnstokeep;
-	columnstokeep.insert(keep);
-	table = table->project(columnstokeep);
-	vector<String> i = table->getHeader().getcolnames();
-	String temp = i[0];
-	if (temp.tostring() == a->tostring())
-	{
+	Table* newtable = table1->naturalJoin(table2);
+	if (newtable->getRows().size() == rows)
 		return true;
-	}
 	else
 		return false;
 }
-bool test3(Table* table, String* c, int coltorename) // Rename
+bool test4(Table* table) // Natural Join blank tables
 {
-	String temp = *c;
-	set<ColumnNamePair> newNames;
-	ColumnNamePair* newpair = new ColumnNamePair(coltorename, temp);
-	newNames.insert(*newpair);
-	table = table->rename(newNames);
-	vector<String> newtableheader = table->getHeader().getcolnames();
-	int i = 0;
-	for(int j = 0; j < coltorename && i < newtableheader.size(); j++)
-	{
-		i++;
-	}
-	if(i < newtableheader.size())
-		temp = newtableheader[i];
-	if (temp.tostring() == c->tostring())
-	{
+	if (test2(table, table, 2) && test3(table, table, 0))
 		return true;
-	}
 	else
 		return false;
 }
-bool test4(Table* table, String* a, int col) // Select - ColValue
+bool test5(Table* table1, Table* table2) //  Natural Join unique tables (no shared columns)
 {
-	SelectionKey* sel = new ColValueKey(col, *a);
-	set<SelectionKey*> myset;
-	myset.insert(sel);
-	table = table->select(myset);
-	if (table->getRows().size() == 2)
-	{
+	if (test2(table1, table2, 4) && test3(table1, table2, 16))
 		return true;
-	}
 	else
 		return false;
 }
-bool test5(Table* table) // Select ColCol, ColValue
+bool test6(Table* table) //Natural Join identical tables
 {
-	String* a = new String(new Token("STRING", "a", 1));
-	SelectionKey* sel = new ColColKey(0, 1);
-	set<SelectionKey*> myset;
-	myset.insert(sel);
-	sel = new ColValueKey(1, *a);
-	myset.insert(sel);
-	table = table->select(myset);
-	if (table->getRows().size() == 1)
-	{
+	if (test2(table, table, 2) && test3(table, table, 4))
 		return true;
-	}
 	else
 		return false;
 }
-bool test6(Table* table) // Select ColCol - Project
+bool test7(Table* table) // Call Union
 {
-	//Select ColCol
-	ColColKey* sel = new ColColKey(0, 1);
-	set<SelectionKey*> myset;
-	myset.insert(sel);
-	table = table->select(myset);
-
-	//Project
-	set<int> columnstokeep;
-	columnstokeep.insert(1);
-	String* b = new String(new Token("STRING", "b", 1));
-	table = table->project(columnstokeep);
-	vector<String> i = table->getHeader().getcolnames();
-	String temp = i[0];
-
-	if (table->getRows().size() == 2)
-	{
-		if (temp.tostring() == b->tostring())
-		{
-			return true;
-		}
-		else
-			return false;
-	}
+	table->Union(table);
+	return true;
+}
+bool test8(Table* table1, Table* table2, int columns) // Union 1 shared column
+{
+	Table* newtable = table1->Union(table2);
+	if (newtable->getHeader().getcolnames().size() == columns)
+		return true;
 	else
 		return false;
 }
-bool test7(Table* table) // Query a(c,c)
+bool test9(Table* table) // Union identical tables
 {
-	String* c = new String(new Token("STRING", "c", 1));
-	String* a = new String(new Token("STRING", "a", 1));
-	if (test1(table, 0, 1))
-		if (test2(table, a, 0))
-			if (test3(table, c, 0))
-			{
-				return true;
-			}
-	return false;
+	if (test8(table, table, 0))
+		return true;
+	else
+		return false;
 }
-bool test8(Table* table) // Query a(c,'b')
+bool test10(Table* table1, Table* table2) //Union No shared columns
 {
-	String* a = new String(new Token("STRING", "a", 1));
-	String* c = new String(new Token("STRING", "c", 1));
-	String* b = new String(new Token("STRING", "b", 1));
-	if (test4(table, b, 0))
-		if (test2(table, a, 0))
-			if (test3(table, c, 0))
-				return true;
-	return false;
-	
-}
-bool test9(Table* table) // Query a('b',c)
-{
-	String* a = new String(new Token("STRING", "a", 1));
-	String* c = new String(new Token("STRING", "c", 1));
-	String* b = new String(new Token("STRING", "b", 1));
-	if (test4(table, b, 1))
-		if (test2(table, b, 1))
-			if (test3(table, c, 0))
-				return true;
-	return false;
-}
-bool test10(Table* table) // Query a(c,d)
-{
-	String* c = new String(new Token("STRING", "c", 1));
-	String* d = new String(new Token("STRING", "d", 1));
-
-	if (test3(table, c, 0))
-		if (test3(table, d, 1))
-			return true;
-	return false;
+	if (test8(table1, table2, 4))
+		return true;
+	else
+		return false;
 }

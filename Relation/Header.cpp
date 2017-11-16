@@ -73,7 +73,7 @@ vector<int> Header::getColumnsToMerge(Header inheader)
 			if (columnNames[j] == attribute)
 				found = true;
 		}
-		if (found)
+		if (!found)
 			result.push_back(i);
 	}
 	return result;
@@ -100,8 +100,7 @@ Header* Header::mergeWith(Header inheader, vector<int> columnsToMerge)
 	/*
 	Header result = new Header(this);
 	for(int column in columnsToMerge)
-		result.values.append(
-			otherHeader.values[column])
+		result.values.append(otherHeader.values[column])
 	return result
 */
 }

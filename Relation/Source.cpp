@@ -56,7 +56,16 @@ int main()
 	columnNames.pop_back();
 	columnNames.push_back(*c);
 	columnNames.push_back(*d);
+	addtovector(rows, *a, *c);
+	header = new Header(columnNames);
 	mytable = new Table(*d, header);
+	for (int i = 0; i < rows.size(); i++)
+		mytable->addRow(rows[i]);
+	tables.push_back(mytable);
+	mytable = new Table(*d, header);
+	for (int i = 0; i < rows.size(); )
+		rows.pop_back();
+	addtovector(rows, *b, *c);
 	for (int i = 0; i < rows.size(); i++)
 		mytable->addRow(rows[i]);
 	tables.push_back(mytable);
@@ -69,7 +78,7 @@ int main()
 		results.push_back(true);
 	else
 		results.push_back(false);
-	if (test3(tables[0],tables[1],4))
+	if (test3(tables[0],tables[1],8))
 		results.push_back(true);
 	else
 		results.push_back(false);
@@ -89,7 +98,7 @@ int main()
 		results.push_back(true);
 	else
 		results.push_back(false);
-	if (test8(tables[0],tables[1],2))
+	if (test8(tables[3],tables[4],6))
 		results.push_back(true);
 	else
 		results.push_back(false);
@@ -148,7 +157,7 @@ bool test4(Table* table) // Natural Join blank tables
 }
 bool test5(Table* table1, Table* table2) //  Natural Join unique tables (no shared columns)
 {
-	if (test2(table1, table2, 4) && test3(table1, table2, 16))
+	if (test2(table1, table2, 4) && test3(table1, table2, 20))
 		return true;
 	else
 		return false;
@@ -165,17 +174,17 @@ bool test7(Table* table) // Call Union
 	table->Union(table);
 	return true;
 }
-bool test8(Table* table1, Table* table2, int columns) // Union 1 shared column
+bool test8(Table* table1, Table* table2, int rows) // Union 2 shared columns
 {
 	Table* newtable = table1->Union(table2);
-	if (newtable->getHeader().getcolnames().size() == columns)
+	if (newtable->getRows().size() == rows)
 		return true;
 	else
 		return false;
 }
 bool test9(Table* table) // Union identical tables
 {
-	if (test8(table, table, 0))
+	if (test8(table, table, 4))
 		return true;
 	else
 		return false;

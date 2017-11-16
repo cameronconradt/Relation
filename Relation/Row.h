@@ -19,7 +19,7 @@ public:
 	Row* rearrange(vector<int> order);
 	friend bool operator<(const Row lh, const Row rh)
 	{
-		for (int i = 0; i < lh.values.size() || i < rh.values.size(); i++)
+		for (int i = 0; i < lh.values.size() && i < rh.values.size(); i++)
 		{
 			if (!(lh.values[i] == rh.values[i]))
 			{

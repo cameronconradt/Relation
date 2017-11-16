@@ -71,7 +71,8 @@ bool Row::matches(Row otherRow, set<ColColKey> columnsToMerge)
 	bool result = true;
 	for (auto i : columnsToMerge)
 	{
-		result = values[i.getcol1()] == otherRow.values[i.getcol2()];
+		if (!(values[i.getcol1()] == otherRow.values[i.getcol2()]))
+			result = false;
 	}
 	return result;
 
@@ -107,7 +108,8 @@ Row* Row::rearrange(vector<int> order)
 	vector<String> newvalues;
 	for (int i = 0; i < order.size(); i++)
 	{
-		newvalues.push_back(values[order[i]]);
+		if(order[i] != -1)
+			newvalues.push_back(values[order[i]]);
 	}
 	Row* result = new Row(newvalues);
 	return result;

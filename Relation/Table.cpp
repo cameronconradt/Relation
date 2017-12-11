@@ -101,3 +101,27 @@ void Table::addRow(vector<String> invalues)
 {
 	rows.insert(new Row(invalues));
 }
+
+string Table::tostring()
+{
+	bool first = true;
+	stringstream output;
+	for (auto i : rows)
+	{
+		int temp = 0;
+		for (auto j : header.getcolnames())
+		{
+			if (first)
+			{
+				output << j.tostring() << "='" << i->getvalues()[temp].tostring() << "'";
+				first = false;
+			}
+			else
+			{
+				output << ", " << j.tostring() << "='" << i->getvalues()[temp].tostring() << "'";
+			}
+		}
+		output << endl;
+	}
+	return output.str();
+}

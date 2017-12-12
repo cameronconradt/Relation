@@ -121,6 +121,7 @@
     <ClInclude Include="Header.h" />
     <ClInclude Include="HeadPredicate.h" />
     <ClInclude Include="Id.h" />
+    <ClInclude Include="interpreter.h" />
     <ClInclude Include="Lexicon.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Parameter.h" />
@@ -150,6 +151,7 @@
     <ClCompile Include="Header.cpp" />
     <ClCompile Include="HeadPredicate.cpp" />
     <ClCompile Include="Id.cpp" />
+    <ClCompile Include="interpreter.cpp" />
     <ClCompile Include="Lexicon.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="Parameter.cpp" />

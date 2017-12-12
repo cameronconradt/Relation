@@ -8,6 +8,8 @@ public:
 	Scheme(Lexicon* Lex, int inpos);
 	~Scheme();
 	string tostring();
+	Id* getid();
+	vector<Id*> getcolumnNames();
 protected:
 	Lexicon* mylex;
 	int pos;

@@ -10,6 +10,7 @@ public:
 	Rules(Lexicon* Lex);
 	~Rules();
 	string tostring();
+	vector<Rule*> getrules();
 protected:
 	Lexicon* mylex;
 	vector<Rule*> rules;

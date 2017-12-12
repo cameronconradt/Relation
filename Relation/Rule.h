@@ -9,6 +9,8 @@ public:
 	Rule(Lexicon* Lex, int inpos);
 	~Rule();
 	string tostring();
+	HeadPredicate* gethead();
+	vector<Predicate*> getpredicates();
 protected:
 	Lexicon* mylex;
 	int pos;

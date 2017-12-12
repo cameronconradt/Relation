@@ -11,6 +11,7 @@ public:
 	~Facts();
 	string tostring();
 	string tostringDomain();
+	vector<Fact*> getfacts();
 protected:
 	Lexicon* mylex;
 	vector<Fact*> facts;

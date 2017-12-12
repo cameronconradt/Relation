@@ -12,6 +12,8 @@ public:
 	Predicate(Lexicon* lex, int inpos);
 	~Predicate();
 	string tostring();
+	vector<Parameter*> getparameters();
+	Id* getid();
 protected:
 	Lexicon* mylex;
 	int pos;

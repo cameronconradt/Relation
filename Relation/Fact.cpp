@@ -51,3 +51,11 @@ void Fact::fillstrings()
 	if(strings.size() == 0)
 		throw 0;
 }
+vector<String*> Fact::getstrings()
+{
+	return strings;
+}
+Id* Fact::getid()
+{
+	return factId;
+}

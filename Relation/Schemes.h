@@ -10,6 +10,7 @@ public:
 	Schemes(Lexicon* Lex);
 	~Schemes();
 	string tostring();
+	vector<Scheme*> getschemes();
 protected:
 	Lexicon* mylex;
 	vector<Scheme*> schemes;

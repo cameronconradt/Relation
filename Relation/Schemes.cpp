@@ -62,3 +62,7 @@ void Schemes::add()
 	}
 
 }
+vector<Scheme*> Schemes::getschemes()
+{
+	return schemes;
+}

@@ -11,6 +11,8 @@ public:
 	~Fact();
 	string tostring();
 	set<string> returnDomain();
+	vector<String*> getstrings();
+	Id* getid();
 protected:
 	Lexicon* mylex;
 	int pos;

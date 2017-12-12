@@ -60,6 +60,8 @@ void Facts::add()
 	bool done = false;
 	for (int i = foundfirst; !done; i++)
 	{
+		if(mylex->gettoken(i) == RULES)
+			done = true;
 		if (mylex->gettoken(i) == ID)
 		{
 			if (mylex->gettoken(i + 1) == LEFT_PAREN)
@@ -75,5 +77,9 @@ void Facts::add()
 			}
 		}
 	}
+}
+vector<Fact*> Facts::getfacts()
+{
+	return facts;
 }
 

@@ -33,6 +33,7 @@ string Scheme::tostring()
 	toreturn += ")";
 	return toreturn;
 }
+
 void Scheme::fillcolumns()
 {
 	schemeId = new Id(mylex->returnToken(pos));
@@ -47,4 +48,14 @@ void Scheme::fillcolumns()
 	}
 	if(columnNames.size() == 0)
 		throw 0;
+}
+
+Id* Scheme::getid()
+{
+	return schemeId;
+}
+
+vector<Id*> Scheme::getcolumnNames()
+{
+	return columnNames;
 }

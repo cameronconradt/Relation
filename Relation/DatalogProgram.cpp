@@ -27,3 +27,23 @@ string DatalogProgram::tostring()
 		facts->tostringDomain();
 
 }
+
+Schemes* DatalogProgram::getschemes()
+{
+	return schemes;
+}
+
+Queries* DatalogProgram::getqueries()
+{
+	return queries;
+}
+
+Facts* DatalogProgram::getfacts()
+{
+	return facts;
+}
+
+Rules* DatalogProgram::getrules()
+{
+	return rules;
+}

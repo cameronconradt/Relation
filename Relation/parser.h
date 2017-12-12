@@ -11,6 +11,7 @@ public:
 	~parser();
 	string simpletostring();
 	string tostring();
+	DatalogProgram* getdata();
 protected:
 	DatalogProgram* mydata;
 	char* filename;

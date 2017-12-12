@@ -23,7 +23,7 @@ string Predicate::tostring()
 			toreturn += ",";
 		toreturn += parameters[i]->tostring();
 	}
-	toreturn += ")";
+	toreturn += ")?";
 	return toreturn;
 }
 void Predicate::fillparameters()
@@ -59,4 +59,13 @@ void Predicate::fillparameters()
 	if(parameters.size() == 0)
 		throw 0;
 
+}
+
+vector<Parameter*> Predicate::getparameters()
+{
+	return parameters;
+}
+Id* Predicate::getid()
+{
+	return predicateId;
 }

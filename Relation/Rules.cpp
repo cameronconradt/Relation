@@ -61,3 +61,8 @@ void Rules::add()
 		}
 	}
 }
+
+vector<Rule*> Rules::getrules()
+{
+	return rules;
+}

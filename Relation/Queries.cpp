@@ -59,3 +59,8 @@ void Queries::add()
 		}
 	}
 }
+
+vector<Query*> Queries::getqueries()
+{
+	return queries;
+}

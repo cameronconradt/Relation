@@ -7,6 +7,7 @@ public:
 	Queries(Lexicon* Lex);
 	~Queries();
 	string tostring();
+	vector<Query*> getqueries();
 protected:
 	Lexicon* mylex;
 	vector<Query*> queries;

@@ -10,6 +10,10 @@ public:
 	DatalogProgram(Lexicon* lex);
 	~DatalogProgram();
 	string tostring();
+	Schemes* getschemes();
+	Queries* getqueries();
+	Facts* getfacts();
+	Rules* getrules();
 protected:
 	Schemes* schemes;
 	Queries* queries;

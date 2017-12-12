@@ -45,6 +45,57 @@
     <ClInclude Include="Token.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DatalogProgram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Expression.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fact.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Facts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadPredicate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Id.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lexicon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Predicate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Queries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Query.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Relation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rules.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scheme.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Schemes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Table.cpp">
@@ -78,6 +129,57 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DatalogProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Expression.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fact.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Facts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HeadPredicate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Id.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lexicon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="List.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="parser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Predicate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Queries.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Query.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Relation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rules.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scheme.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Schemes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
